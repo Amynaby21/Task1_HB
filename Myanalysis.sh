@@ -2,8 +2,7 @@
 #!/usr/bin/bash
 wget https://raw.githubusercontent.com/HackBio-Internship/wale-home-tasks/main/DNA.fa
 tail -n +2 DNA.fa | tr -d '\n' | wc -c
-echo -n "TGGGTTGATTCCACACCCCCGCCCGGCACCCGCGTCCGCGCCGTGGCCATCTACAAGCAGTCACAGCACA
-TGACGGAGGTTGTGAGGCGCTGCCCCCACCATGAGCGCTGCTCAGATAGCGAT" | sed 's/\(.\)/\1\n/g'| sort | uniq -c
+grep -Eo 'A|T|G|C' DNA.fa | sort | uniq -c | awk '{print $2": "$1}'
 
 #Conda software setup
 wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Linux-x86_64.sh
